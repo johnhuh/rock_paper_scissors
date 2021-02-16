@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors Game</h1>
+        <p>Click the button to get started!</p>
+        <button class="btn" onclick="game()">Play!</button>
+        <p id="play"></p>
+</body>
+
+<script>
+
+    function game() {
+        for (let i=1; i<6; i++) {
+            playerPlay();
+
+        }
+        function playerPlay() {
+            let playerSelection = prompt("What's your move?","");
+            playerSelection=playerSelection.toLowerCase();
+            switch (playerSelection) {
+                case "rock":
+                case "paper":
+                case "scissors":
+                    playerSelection = playerSelection;
+                    break;
+                default:
+                    document.getElementById("play").innerHTML="Invalid Entry. Please Try Again."
+                    break
+            }
+
+            let computerSelection = Math.floor(Math.random()*3);
+            if (computerSelection == 0) {
+                computerSelection = "rock"
+            } else if (computerSelection == 1) {
+                computerSelection = "paper"
+            } else {
+                computerSelection = "scissors"
+            }
+
+
+            if (computerSelection == playerSelection) {
+                document.getElementById("play").innerHTML="Draw! Try Again."
+                console.log("Draw")
+            } else if (computerSelection == "rock" && playerSelection == "paper" || computerSelection == "paper" && playerSelection == "scissors" || computerSelection == "scissors" && playerSelection == "rock") {
+                document.getElementById("play").innerHTML="You Won!"
+                console.log("Win!")
+            } else if (computerSelection == "rock" && playerSelection == "scissors" || computerSelection == "paper" && playerSelection == "rock" || computerSelection == "scissors" && playerSelection == "paper") {
+                document.getElementById("play").innerHTML="You Lost! :("
+                console.log("Lost :(")
+            } else {
+                document.getElementById("play").innerHTML="Unexpected Error. Try Again"
+                console.log("Invalid Entry")
+            }
+
+        }
+    }
+
+    
+
+
+
+</script>
+</html>
